@@ -55,10 +55,35 @@ class BitMap
     }
 
     /**
+     * 判断$offset是否在bit中
+     * @param int $offset
+     * @return bool
+     * @throws \Exception
+     *
+     */
+    public function getBit(int $offset)
+    {
+        $bytePos = $offset / self::INIT_BIT_SIZE;
+        if (!isset($this->bitmap[$bytePos])) {
+            //工作的位置不存在
+            return false;
+        }
+        //创建一个bitmap，取交集,就可以知道存不存在了
+        $offset_bitmap = new BitMap();
+        $offset_bitmap->addBit($offset);
+        $diff_bit = $this->intersect($offset_bitmap);
+        if (empty($diff_bit)) {
+            return false;
+        }
+        //数组不为空，有数据
+        return true;
+    }
+
+    /**
      * 返回bitmap集合
      * @return array
      */
-    public function getBitMap(): array
+    private function getBitMap(): array
     {
         return $this->bitmap;
     }

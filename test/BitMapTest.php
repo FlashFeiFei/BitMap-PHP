@@ -12,6 +12,7 @@ class BitMapTest extends TestCase
     {
 
         $bit1 = new BitMap();
+        $bit1->addBit(0);
         $bit1->addBit(1);
         $bit1->addBit(3);
         $bit1->addBit(5);
@@ -45,6 +46,17 @@ class BitMapTest extends TestCase
     public function testMergeByBitMap(BitMap $bit1, BitMap $bit2)
     {
         var_dump(BitMap::mergeByBitMap($bit1, $bit2));
+    }
+
+    /**
+     * @dataProvider testAddBit
+     */
+    public function testGetBit(BitMap $bit1)
+    {
+        var_dump($bit1->getBit(0));
+        var_dump($bit1->getBit(1));
+        var_dump($bit1->getBit(54785));
+        var_dump($bit1->getBit(2));
     }
 
 }
