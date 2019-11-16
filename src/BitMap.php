@@ -32,6 +32,11 @@ class BitMap
         $this->bitmap = array_fill(0, 50, 0);
     }
 
+    public function __destruct()
+    {
+        unset($this->bitmap);
+    }
+
     /**
      * 添加状态到bitmap的位置
      * @param int $offset
