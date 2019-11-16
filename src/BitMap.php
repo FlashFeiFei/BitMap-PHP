@@ -61,7 +61,7 @@ class BitMap
      * @throws \Exception
      *
      */
-    public function getBit(int $offset)
+    public function getBit(int $offset): bool
     {
         $bytePos = $offset / self::INIT_BIT_SIZE;
         if (!isset($this->bitmap[$bytePos])) {
@@ -115,7 +115,7 @@ class BitMap
      * @return array
      * @throws \Exception
      */
-    public static function intersectByBitMap(BitMap $bitmap_object_1, BitMap $bitmap_object_2)
+    public static function intersectByBitMap(BitMap $bitmap_object_1, BitMap $bitmap_object_2): array
     {
         $bitmap_1 = $bitmap_object_1->getBitMap();
         $bitmap_2 = $bitmap_object_2->getBitMap();
@@ -134,7 +134,7 @@ class BitMap
      * @return array
      * @throws \Exception
      */
-    public function intersect(BitMap $bitmap_object)
+    public function intersect(BitMap $bitmap_object): array
     {
         $my_bitmap = $this->getBitMap();
         $bitmap = $bitmap_object->getBitMap();
@@ -161,7 +161,7 @@ class BitMap
      * @return array
      * @throws \Exception
      */
-    public static function mergeByBitMap(BitMap $bitmap_object_1, BitMap $bitmap_object_2)
+    public static function mergeByBitMap(BitMap $bitmap_object_1, BitMap $bitmap_object_2): array
     {
         $bitmap_1 = $bitmap_object_1->getBitMap();
         $bitmap_2 = $bitmap_object_2->getBitMap();
@@ -180,7 +180,7 @@ class BitMap
      * @return array
      * @throws \Exception
      */
-    public function merge(BitMap $bitmap_object)
+    public function merge(BitMap $bitmap_object): array
     {
         $my_bitmap = $this->getBitMap();
         $bitmap = $bitmap_object->getBitMap();
